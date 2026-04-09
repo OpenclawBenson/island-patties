@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Island Patties - Elevated Jamaican Beef Patties</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --cream: #FDF8F3;
+            --ivory: #FFFBF5;
+            --deep-green: #1B4332;
+            --forest: #2D6A4F;
+            --gold: #C9A227;
+            --warm-gold: #D4A574;
+            --charcoal: #1A1A1A;
+            --soft-gray: #6B7280;
+            --coral: #E07A5F;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--ivory);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Navigation */
+        nav {
+            background: rgba(255, 251, 245, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(27, 67, 50, 0.1);
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            font-weight: 600;
+            color: var(--deep-green);
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span {
+            color: var(--gold);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 500;
+            font-size: 0.95em;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--deep-green);
+        }
+        
+        .nav-cta {
+            background: var(--deep-green);
+            color: white !important;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, var(--ivory) 0%, var(--cream) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 162, 39, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .hero::after {
+            content: '🌴';
+            position: absolute;
+            bottom: 40px;
+            left: 5%;
+            font-size: 120px;
+            opacity: 0.06;
+            transform: rotate(-15deg);
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .hero-text {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .eyebrow {
+            font-size: 0.85em;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--coral);
+            margin-bottom: 20px;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            font-weight: 600;
+            line-height: 1.1;
+            color: var(--charcoal);
+            margin-bottom: 24px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25em;
+            color: var(--soft-gray);
+            line-height: 1.7;
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        
+        .btn-primary {
+            background: var(--deep-green);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1em;
+            transition: all 0.3s;
+            display: inline-block;
+            border: 2px solid var(--deep-green);
+        }
+        
+        .btn-primary:hover {
+            background: var(--forest);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(27, 67, 50, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--deep-green);
+            padding: 18px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1em;
+            transition: all 0.3s;
+            display: inline-block;
+            border: 2px solid var(--deep-green);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--deep-green);
+            color: white;
+        }
+        
+        .premium-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            padding: 16px 28px;
+            background: white;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            font-size: 0.85em;
+            font-weight: 500;
+            color: var(--soft-gray);
+        }
+        
+        .premium-badge span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .premium-badge span::before {
+            content: '✦';
+            color: var(--gold);
+        }
+        
+        .hero-image {
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+        
+        .floating-accent {
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 150px;
+            height: 150px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        /* Featured Offers */
+        .featured-offers {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8em;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 16px;
+        }
+        
+        .section-header p {
+            color: var(--soft-gray);
+            font-size: 1.1em;
+        }
+        
+        .offers-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .offer-card {
+            background: var(--ivory);
+            border-radius: 24px;
+            padding: 50px 40px;
+            text-align: center;
+            border: 1px solid rgba(27, 67, 50, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .offer-card.signature {
+            background: var(--deep-green);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .offer-card.signature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--warm-gold));
+        }
+        
+        .signature-label {
+            display: inline-block;
+            background: var(--gold);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        
+        .offer-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .offer-card.signature h3 {
+            color: white;
+        }
+        
+        .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            font-weight: 600;
+            color: var(--deep-green);
+            margin: 20px 0;
+        }
+        
+        .offer-card.signature .price {
+            color: var(--gold);
+        }
+        
+        .price span {
+            font-size: 0.4em;
+            font-weight: 400;
+            color: var(--soft-gray);
+        }
+        
+        .offer-card.signature .price span {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .offer-description {
+            color: var(--soft-gray);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+        
+        .offer-card.signature .offer-description {
+            color: rgba(255,255,255,0.85);
+        }
+        
+        .btn-order {
+            display: inline-block;
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--deep-green);
+        }
+        
+        .offer-card:not(.signature) .btn-order {
+            background: transparent;
+            color: var(--deep-green);
+        }
+        
+        .offer-card:not(.signature) .btn-order:hover {
+            background: var(--deep-green);
+            color: white;
+        }
+        
+        .offer-card.signature .btn-order {
+            background: var(--gold);
+            color: white;
+            border-color: var(--gold);
+        }
+        
+        .offer-card.signature .btn-order:hover {
+            background: var(--warm-gold);
+            border-color: var(--warm-gold);
+        }
+        
+        /* Why Choose Us */
+        .why-us {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--ivory) 100%);
+            position: relative;
+        }
+        
+        .why-us::before {
+            content: '🌴';
+            position: absolute;
+            top: 60px;
+            right: 10%;
+            font-size: 200px;
+            opacity: 0.04;
+            transform: rotate(10deg);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .benefit-card {
+            text-align: center;
+            padding: 50px 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            transition: transform 0.3s;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--ivory) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 2em;
+            border: 2px solid rgba(201, 162, 39, 0.2);
+        }
+        
+        .benefit-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4em;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+        }
+        
+        .benefit-card p {
+            color: var(--soft-gray);
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
+        
+        /* Signature Visual */
+        .signature-visual {
+            padding: 100px 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .visual-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .visual-container img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.12);
+        }
+        
+        .visual-accent {
+            position: absolute;
+            bottom: -40px;
+            left: -40px;
+            width: 200px;
+            height: 200px;
+            background: var(--deep-green);
+            border-radius: 50%;
+            opacity: 0.05;
+            z-index: -1;
+        }
+        
+        /* Brand Story */
+        .brand-story {
+            padding: 100px 0;
+            background: var(--deep-green);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .brand-story::before {
+            content: '🌴';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            font-size: 300px;
+            opacity: 0.03;
+        }
+        
+        .brand-story .container {
+            max-width: 800px;
+        }
+        
+        .brand-story h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        
+        .brand-story p {
+            font-size: 1.2em;
+            line-height: 1.9;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--ivory);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 20px;
+            left: 30px;
+        }
+        
+        .testimonial-card p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: var(--charcoal);
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stars {
+            color: var(--gold);
+            font-size: 1.2em;
+            letter-spacing: 2px;
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            padding: 120px 0;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--ivory) 100%);
+            text-align: center;
+            position: relative;
+        }
+        
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        
+        .final-cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 20px;
+        }
+        
+        .final-cta > .container > p {
+            font-size: 1.2em;
+            color: var(--soft-gray);
+            margin-bottom: 40px;
+        }
+        
+        .final-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: rgba(255,255,255,0.7);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .footer-logo span {
+            color: var(--gold);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-links a {
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--gold);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-bottom p {
+            font-style: italic;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.8em;
+            }
+            
+            .hero-subtitle {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .offers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefits-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .final-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">Island<span>Patties</span></div>
+                <div class="nav-links">
+                    <a href="#offers">Our Patties</a>
+                    <a href="#story">Our Story</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#offers" class="nav-cta">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="eyebrow">Island-Inspired Savory Pastries</div>
+                    <h1>An Elevated Taste of Jamaica</h1>
+                    <p class="hero-subtitle">Discover flaky, golden Jamaican beef patties crafted with bold flavor and wrapped in a warm, buttery crust. Enjoy a single patty for $5 or indulge in our signature dozen box for $35.</p>
+                    
+                    <div class="hero-buttons">
+                        <a href="#offers" class="btn-primary">Order the Dozen</a>
+                        <a href="#offers" class="btn-secondary">Buy a Single</a>
+                    </div>
+                    
+                    <div class="premium-badge">
+                        <span>Baked Fresh</span>
+                        <span>Bold Flavor</span>
+                        <span>Beautifully Boxed</span>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <div class="floating-accent"></div>
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=700&fit=crop" alt="Premium Jamaican Beef Patties">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Offers -->
+    <section class="featured-offers" id="offers">
+        <div class="container">
+            <div class="section-header">
+                <h2>Choose Your Experience</h2>
+                <p>From a single indulgence to a dozen delights</p>
+            </div>
+            
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <h3>Single Beef Patty</h3>
+                    <div class="price">$5</div>
+                    <p class="offer-description">A warm, savory pastry with rich Jamaican flavor—perfect for a quick indulgence.</p>
+                    <a href="#" class="btn-order">Order One</a>
+                </div>
+                
+                <div class="offer-card signature">
+                    <div class="signature-label">Signature Box</div>
+                    <h3>Dozen Box of Jamaican Beef Patties</h3>
+                    <div class="price">$35</div>
+                    <p class="offer-description">Our best-value offering. A beautifully boxed dozen of flaky, flavorful patties perfect for entertaining, gifting, or stocking up.</p>
+                    <a href="#" class="btn-order">Order the Box</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Island Patties</h2>
+                <p>Crafted with care, baked to perfection</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🥐</div>
+                    <h3>Flaky Golden Pastry</h3>
+                    <p>Buttery, layered crust that shatters delicately with every bite, made with premium ingredients</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌶️</div>
+                    <h3>Rich, Savory Beef Filling</h3>
+                    <p>Authentic Jamaican spices blended with quality ground beef for that signature island heat</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎁</div>
+                    <h3>Perfect for Any Occasion</h3>
+                    <p>Ideal for gatherings, gifting, or treating yourself to something truly special</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Visual -->
+    <section class="signature-visual">
+        <div class="container">
+            <div class="visual-container">
+                <div class="visual-accent"></div>
+                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=900&h=600&fit=crop" alt="Premium Box of Jamaican Beef Patties">
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Story -->
+    <section class="brand-story" id="story">
+        <div class="container">
+            <h2>Our Story</h2>
+            <p>Inspired by the bold flavors of Jamaica and presented with a refined touch, our beef patties bring together comfort, culture, and quality in every bite. From the flaky crust to the savory filling, each patty is made to deliver a taste experience that feels both familiar and elevated.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Customers Say</h2>
+                <p>Real experiences from patty lovers</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>Perfectly flaky and packed with flavor. These patties are unlike anything I've tasted—truly elevated.</p>
+                    <div class="stars">★★★★★</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p>The dozen box was a hit with everyone at our gathering. Beautiful presentation and incredible taste.</p>
+                    <div class="stars">★★★★★</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p>A beautiful presentation and an even better taste. These have become my go-to for special occasions.</p>
+                    <div class="stars">★★★★★</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Bring Home the Flavor</h2>
+            <p>Choose a single patty for $5 or enjoy our signature dozen box for $35.</p>
+            
+            <div class="final-buttons">
+                <a href="#offers" class="btn-secondary">Order Single</a>
+                <a href="#offers" class="btn-primary">Order Signature Box</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Island<span>Patties</span></div>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="Facebook">f</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>A refined taste of Jamaica, beautifully served.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
